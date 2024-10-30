@@ -190,6 +190,7 @@ export const signUp = async function signUp({ name, email, password }: { name: s
       email,
       bio: "Description...",
       image: "",
+      license: crypto.randomUUID()
     }).returning();
 
     const [account] = await tx.insert(accounts).values({

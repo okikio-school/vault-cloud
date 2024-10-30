@@ -1,16 +1,17 @@
-import type { Config } from "drizzle-kit";
+import { defineConfig } from "drizzle-kit";
 import { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT } from "./src/env.ts";
 
-export default {
-  schema: "./src/db/schema.ts",
+export default defineConfig({
   out: "./drizzle",
-  driver: 'pg',
+  dialect: "postgresql",
+  schema: "./src/db/schema.ts",
   dbCredentials: {
-    host: PGHOST!,
-    database: PGDATABASE!,
-    user: PGUSER!,
-    password: PGPASSWORD!,
-    port: PGPORT!,
-    ssl: false,
-  }
-} satisfies Config;
+    url: `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}:${PGPORT}/${PGDATABASE}`
+    // host: PGHOST!,
+    // database: PGDATABASE!,
+    // user: PGUSER!,
+    // password: PGPASSWORD!,
+    // port: PGPORT!,
+    // ssl: false,
+  },
+});

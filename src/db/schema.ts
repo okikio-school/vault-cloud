@@ -11,6 +11,7 @@ export const users = pgTable('users', {
   emailVerified: timestamp("emailVerified", { mode: "date" }),
   image: text("image"),
   bio: text('bio'),
+  license: text('license').notNull(),
 });
 
 // Accounts represent the different types of ways a user can signin
