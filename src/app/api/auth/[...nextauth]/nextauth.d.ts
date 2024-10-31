@@ -15,6 +15,7 @@ declare module "next-auth" {
       email: NewUser["email"] | null,
       image: NewUser["image"] | null,
       bio: NewUser["bio"] | null,
+      license: NewUser["license"]
     } & NewUser
   }
 
@@ -24,5 +25,6 @@ declare module "next-auth" {
     email: NewUser["email"] | null,
     image: NewUser["image"] | null,
     bio: NewUser["bio"] | null,
+    license: NewUser["license"]
   }
 }

@@ -17,7 +17,7 @@ export const adapter = {
   async createUser(data: Omit<AdapterUser, "id">) {
     const user = await db
       .insert(users)
-      .values({ ...data, userId: crypto.randomUUID() })
+      .values({ ...data, userId: crypto.randomUUID(), license: crypto.randomUUID() })
       .returning()
       .then((res) => res[0] ?? null);
 
