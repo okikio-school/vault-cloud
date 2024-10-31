@@ -12,9 +12,9 @@ export const transporter = nodemailer.createTransport({
 });
 
 export async function sendMail(_options: Mail.Options, html: React.ReactElement) {
-  const emailHtml = render(html);
+  const emailHtml = await render(html);
 
-  const options = {
+  const options: Mail.Options = {
     ..._options,
     html: emailHtml,
   };

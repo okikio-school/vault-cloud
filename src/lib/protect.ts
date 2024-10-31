@@ -1,4 +1,4 @@
-import { redirect, usePathname } from 'next/navigation';
+import { redirect } from 'next/navigation';
 import { authOptions } from '@/app/api/auth/[...nextauth]/_options';
 import { getServerSession, type AuthOptions } from 'next-auth';
 
@@ -11,10 +11,10 @@ export async function protect(pathname: string, url = "/login") {
   }
 }
 
-export function protectClient(url = "/login") { 
-  const session = useSession()
-  const pathname = usePathname()
-  if (!session?.data?.user && url && pathname) { 
-    redirect(url + "?callbackUrl=" + encodeURIComponent(pathname))
-  }
-}
+// export function protectClient(url = "/login") {
+//   const session = useSession()
+//   const pathname = usePathname()
+//   if (!session?.data?.user && url && pathname) { 
+//     redirect(url + "?callbackUrl=" + encodeURIComponent(pathname))
+//   }
+// }

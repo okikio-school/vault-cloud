@@ -17,6 +17,9 @@ importers:
       '@blocknote/react':
         specifier: ^0.18.1
         version: 0.18.1(@tiptap/pm@2.9.1)(@types/hast@3.0.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@blocknote/shadcn':
+        specifier: ^0.18.1
+        version: 0.18.1(@tiptap/pm@2.9.1)(@types/hast@3.0.4)(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@hookform/resolvers':
         specifier: ^3.9.1
         version: 3.9.1(react-hook-form@7.53.1(react@18.3.1))
@@ -294,6 +297,12 @@ packages:
 
   '@blocknote/react@0.18.1':
     resolution: {integrity: sha512-Ub0XJe2PbcOnYbtDFT9lNV+kGrPdowhiWlvelYIobTu1Jy7vXCYg8nlCjao4QIdBlf0eVWkCUR1wyUWoxxnx2g==}
+    peerDependencies:
+      react: ^18.0 || ^19.0 || >= 19.0.0-rc
+      react-dom: ^18.0 || ^19.0 || >= 19.0.0-rc
+
+  '@blocknote/shadcn@0.18.1':
+    resolution: {integrity: sha512-CW/AlHRBYdqrok6GPmnqxpFIhSfgg4QvRb99greOxmzvkb+ZhnGwxwBdhaqU79FDKVYG8qPaZHQzP6py5wH8Tg==}
     peerDependencies:
       react: ^18.0 || ^19.0 || >= 19.0.0-rc
       react-dom: ^18.0 || ^19.0 || >= 19.0.0-rc
@@ -2824,6 +2833,11 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
+  lucide-react@0.362.0:
+    resolution: {integrity: sha512-0S+JudK0AD9vyB0zbu1K0aQsy8k9Wq2l03bio6wxqF2FhK2TSp/y+22HfMyv40EURifgxoSwdU8eIcOv0a8gBA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
+
   lucide-react@0.454.0:
     resolution: {integrity: sha512-hw7zMDwykCLnEzgncEEjHeA6+45aeEzRYuKHuyRSOPkhko+J3ySGjGIzu+mmMfDFG1vazHepMaYFYHbTFAZAAQ==}
     peerDependencies:
@@ -4112,6 +4126,43 @@ snapshots:
       - refractor
       - sugar-high
       - supports-color
+
+  '@blocknote/shadcn@0.18.1(@tiptap/pm@2.9.1)(@types/hast@3.0.4)(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@blocknote/core': 0.18.0(@types/hast@3.0.4)
+      '@blocknote/react': 0.18.1(@tiptap/pm@2.9.1)(@types/hast@3.0.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@hookform/resolvers': 3.9.1(react-hook-form@7.53.1(react@18.3.1))
+      '@radix-ui/react-dropdown-menu': 2.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-label': 2.1.0(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-popover': 1.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-select': 2.1.2(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-slot': 1.1.0(@types/react@18.3.12)(react@18.3.1)
+      '@radix-ui/react-tabs': 1.1.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-toggle': 1.1.0(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-tooltip': 1.1.3(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      autoprefixer: 10.4.20(postcss@8.4.47)
+      class-variance-authority: 0.7.0
+      clsx: 2.1.1
+      lucide-react: 0.362.0(react@18.3.1)
+      postcss: 8.4.47
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      react-hook-form: 7.53.1(react@18.3.1)
+      tailwind-merge: 2.5.4
+      tailwindcss: 3.4.14
+      tailwindcss-animate: 1.0.7(tailwindcss@3.4.14)
+      zod: 3.23.8
+    transitivePeerDependencies:
+      - '@tiptap/pm'
+      - '@types/hast'
+      - '@types/react'
+      - '@types/react-dom'
+      - highlight.js
+      - lowlight
+      - refractor
+      - sugar-high
+      - supports-color
+      - ts-node
 
   '@drizzle-team/brocli@0.10.2': {}
 
@@ -6463,6 +6514,10 @@ snapshots:
   lru-cache@6.0.0:
     dependencies:
       yallist: 4.0.0
+
+  lucide-react@0.362.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   lucide-react@0.454.0(react@18.3.1):
     dependencies:

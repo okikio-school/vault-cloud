@@ -4,7 +4,8 @@ import * as Schema from "@/db/schema";
 import { getServerSession, type AuthOptions } from "next-auth";
 import { useSearchParams } from "next/navigation";
 
-export default async function MyVersionsPage({ params }: { params: { postId: string } }) {
+export default async function MyVersionsPage({ params: _params }: { params: Promise<{ postId: string }> }) {
+    const params = await _params;
 
     const usersession = await getServerSession(authOptions as unknown as AuthOptions)
     const userid = usersession?.user.id;

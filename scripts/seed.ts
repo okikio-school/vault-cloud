@@ -195,6 +195,7 @@ const main = async () => {
         email: faker.internet.email(),
         bio: faker.person.bio(),
         image: faker.image.avatar(),
+        license: crypto.randomUUID(),
       }).returning();
       usersData.push(user);
 

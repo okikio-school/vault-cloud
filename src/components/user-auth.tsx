@@ -29,7 +29,7 @@ import {
 import Link from "next/link";
 import { Checkbox } from "./ui/checkbox";
 import { signUp } from "@/lib/actions";
-import { toast } from "./ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   type: "login" | "signup";

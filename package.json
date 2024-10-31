@@ -18,6 +18,7 @@
     "@auth/drizzle-adapter": "^1.7.2",
     "@blocknote/core": "^0.18.0",
     "@blocknote/react": "^0.18.1",
+    "@blocknote/shadcn": "^0.18.1",
     "@hookform/resolvers": "^3.9.1",
     "@neondatabase/serverless": "^0.10.1",
     "@radix-ui/react-accordion": "^1.2.1",

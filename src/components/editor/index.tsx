@@ -1,10 +1,8 @@
 "use client";
 
-import { protect, protectClient } from "@/lib/protect";
 import { cn } from "@/lib/utils";
 
 import { CounterClockwiseClockIcon } from "@radix-ui/react-icons"
-
 import { Button } from "@/components/ui/button"
 import {
   HoverCard,
@@ -48,7 +46,7 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { toast } from "../ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 import Link from "next/link";
 
 const Editor = dynamic(() => import("./editor.tsx"), { ssr: false });

@@ -13,7 +13,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function PostPage({ params }: { params: { postId: string, version: string } }) {
+export default async function PostPage({ params: _params }: { params: Promise<{ postId: string, version: string }> }) {
+  const params = await _params;
   return (
     <div className="pt-24 container max-w-screen-md">
       <PostContent postID={params.postId} versionID={params.version} />

@@ -11,7 +11,8 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function EditPostPage({ params }: { params: { postId: string, version: string } }) {
+export default async function EditPostPage({ params: _params }: { params: Promise<{ postId: string, version: string }> }) {
+  const params = await _params;
   await protect(`/edit/${params.postId}/${params.version}`);
 
   const post = await getPost({
