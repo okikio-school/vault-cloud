@@ -1,10 +1,8 @@
 {
-  "version": "5",
-  "dialect": "pg",
-  "id": "f3e41626-e91e-49b6-ad35-280c5a8fd05b",
-  "prevId": "51957b38-1537-4b60-aa6d-171937c20fe5",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "account": {
+    "public.account": {
       "name": "account",
       "schema": "",
       "columns": {
@@ -86,15 +84,15 @@
         "account_user_id_users_user_id_fk": {
           "name": "account_user_id_users_user_id_fk",
           "tableFrom": "account",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {
@@ -109,14 +107,17 @@
       "uniqueConstraints": {
         "account_user_id_unique": {
           "name": "account_user_id_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "user_id"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
-      }
+      },
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "assets": {
+    "public.assets": {
       "name": "assets",
       "schema": "",
       "columns": {
@@ -178,9 +179,12 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "comments": {
+    "public.comments": {
       "name": "comments",
       "schema": "",
       "columns": {
@@ -226,47 +230,50 @@
         "comments_post_id_posts_post_id_fk": {
           "name": "comments_post_id_posts_post_id_fk",
           "tableFrom": "comments",
-          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
+          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "comments_user_id_users_user_id_fk": {
           "name": "comments_user_id_users_user_id_fk",
           "tableFrom": "comments",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "comments_parent_comment_comments_comment_id_fk": {
           "name": "comments_parent_comment_comments_comment_id_fk",
           "tableFrom": "comments",
-          "tableTo": "comments",
           "columnsFrom": [
             "parent_comment"
           ],
+          "tableTo": "comments",
           "columnsTo": [
             "comment_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "contentversions": {
+    "public.contentversions": {
       "name": "contentversions",
       "schema": "",
       "columns": {
@@ -324,21 +331,24 @@
         "contentversions_post_id_posts_post_id_fk": {
           "name": "contentversions_post_id_posts_post_id_fk",
           "tableFrom": "contentversions",
-          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
+          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "follows": {
+    "public.follows": {
       "name": "follows",
       "schema": "",
       "columns": {
@@ -372,15 +382,15 @@
         "follows_follower_id_users_user_id_fk": {
           "name": "follows_follower_id_users_user_id_fk",
           "tableFrom": "follows",
-          "tableTo": "users",
           "columnsFrom": [
             "follower_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -393,9 +403,12 @@
           ]
         }
       },
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "permissions": {
+    "public.permissions": {
       "name": "permissions",
       "schema": "",
       "columns": {
@@ -424,14 +437,17 @@
       "uniqueConstraints": {
         "permissions_name_unique": {
           "name": "permissions_name_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "name"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
-      }
+      },
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "postassets": {
+    "public.postassets": {
       "name": "postassets",
       "schema": "",
       "columns": {
@@ -453,28 +469,28 @@
         "postassets_post_id_posts_post_id_fk": {
           "name": "postassets_post_id_posts_post_id_fk",
           "tableFrom": "postassets",
-          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
+          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "postassets_assetid_assets_assetid_fk": {
           "name": "postassets_assetid_assets_assetid_fk",
           "tableFrom": "postassets",
-          "tableTo": "assets",
           "columnsFrom": [
             "assetid"
           ],
+          "tableTo": "assets",
           "columnsTo": [
             "assetid"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -486,9 +502,12 @@
           ]
         }
       },
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "postreads": {
+    "public.postreads": {
       "name": "postreads",
       "schema": "",
       "columns": {
@@ -516,41 +535,41 @@
         "postreads_post_id_posts_post_id_fk": {
           "name": "postreads_post_id_posts_post_id_fk",
           "tableFrom": "postreads",
-          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
+          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "postreads_post_version_contentversions_version_id_fk": {
           "name": "postreads_post_version_contentversions_version_id_fk",
           "tableFrom": "postreads",
-          "tableTo": "contentversions",
           "columnsFrom": [
             "post_version"
           ],
+          "tableTo": "contentversions",
           "columnsTo": [
             "version_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "postreads_user_id_users_user_id_fk": {
           "name": "postreads_user_id_users_user_id_fk",
           "tableFrom": "postreads",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -563,9 +582,12 @@
           ]
         }
       },
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "posts": {
+    "public.posts": {
       "name": "posts",
       "schema": "",
       "columns": {
@@ -605,29 +627,32 @@
         "posts_userid_users_user_id_fk": {
           "name": "posts_userid_users_user_id_fk",
           "tableFrom": "posts",
-          "tableTo": "users",
           "columnsFrom": [
             "userid"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "posts_version_unique": {
           "name": "posts_version_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "version"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
-      }
+      },
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "rolepermissions": {
+    "public.rolepermissions": {
       "name": "rolepermissions",
       "schema": "",
       "columns": {
@@ -649,28 +674,28 @@
         "rolepermissions_permission_id_permissions_permission_id_fk": {
           "name": "rolepermissions_permission_id_permissions_permission_id_fk",
           "tableFrom": "rolepermissions",
-          "tableTo": "permissions",
           "columnsFrom": [
             "permission_id"
           ],
+          "tableTo": "permissions",
           "columnsTo": [
             "permission_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "rolepermissions_role_id_roles_role_id_fk": {
           "name": "rolepermissions_role_id_roles_role_id_fk",
           "tableFrom": "rolepermissions",
-          "tableTo": "roles",
           "columnsFrom": [
             "role_id"
           ],
+          "tableTo": "roles",
           "columnsTo": [
             "role_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -682,9 +707,12 @@
           ]
         }
       },
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "roles": {
+    "public.roles": {
       "name": "roles",
       "schema": "",
       "columns": {
@@ -713,14 +741,17 @@
       "uniqueConstraints": {
         "roles_name_unique": {
           "name": "roles_name_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "name"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
-      }
+      },
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -748,21 +779,24 @@
         "session_userId_users_user_id_fk": {
           "name": "session_userId_users_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "users",
           "columnsFrom": [
             "userId"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "slugs": {
+    "public.slugs": {
       "name": "slugs",
       "schema": "",
       "columns": {
@@ -797,14 +831,17 @@
       "uniqueConstraints": {
         "slugs_slug_unique": {
           "name": "slugs_slug_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "slug"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
-      }
+      },
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "tags": {
+    "public.tags": {
       "name": "tags",
       "schema": "",
       "columns": {
@@ -827,14 +864,17 @@
       "uniqueConstraints": {
         "tags_name_unique": {
           "name": "tags_name_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "name"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
-      }
+      },
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "tagstoposts": {
+    "public.tagstoposts": {
       "name": "tagstoposts",
       "schema": "",
       "columns": {
@@ -856,28 +896,28 @@
         "tagstoposts_tag_id_tags_tag_id_fk": {
           "name": "tagstoposts_tag_id_tags_tag_id_fk",
           "tableFrom": "tagstoposts",
-          "tableTo": "tags",
           "columnsFrom": [
             "tag_id"
           ],
+          "tableTo": "tags",
           "columnsTo": [
             "tag_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "tagstoposts_post_id_posts_post_id_fk": {
           "name": "tagstoposts_post_id_posts_post_id_fk",
           "tableFrom": "tagstoposts",
-          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
+          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -889,9 +929,12 @@
           ]
         }
       },
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "userroles": {
+    "public.userroles": {
       "name": "userroles",
       "schema": "",
       "columns": {
@@ -913,28 +956,28 @@
         "userroles_user_id_users_user_id_fk": {
           "name": "userroles_user_id_users_user_id_fk",
           "tableFrom": "userroles",
-          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "userroles_role_id_roles_role_id_fk": {
           "name": "userroles_role_id_roles_role_id_fk",
           "tableFrom": "userroles",
-          "tableTo": "roles",
           "columnsFrom": [
             "role_id"
           ],
+          "tableTo": "roles",
           "columnsTo": [
             "role_id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -946,9 +989,12 @@
           ]
         }
       },
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "users": {
+    "public.users": {
       "name": "users",
       "schema": "",
       "columns": {
@@ -995,14 +1041,17 @@
       "uniqueConstraints": {
         "users_email_unique": {
           "name": "users_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
-      }
+      },
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     },
-    "verificationToken": {
+    "public.verificationToken": {
       "name": "verificationToken",
       "schema": "",
       "columns": {
@@ -1036,38 +1085,45 @@
           ]
         }
       },
-      "uniqueConstraints": {}
+      "uniqueConstraints": {},
+      "policies": {},
+      "isRLSEnabled": false,
+      "checkConstraints": {}
     }
   },
   "enums": {
-    "asset_type": {
+    "public.asset_type": {
       "name": "asset_type",
-      "values": {
-        "photo": "photo",
-        "video": "video",
-        "file": "file"
-      }
+      "schema": "public",
+      "values": [
+        "photo",
+        "video",
+        "file"
+      ]
     },
-    "follow_type": {
+    "public.follow_type": {
       "name": "follow_type",
-      "values": {
-        "user": "user",
-        "tag": "tag"
-      }
+      "schema": "public",
+      "values": [
+        "user",
+        "tag"
+      ]
     },
-    "slug_type": {
+    "public.slug_type": {
       "name": "slug_type",
-      "values": {
-        "tag": "tag",
-        "post": "post"
-      }
+      "schema": "public",
+      "values": [
+        "tag",
+        "post"
+      ]
     },
-    "version_type": {
+    "public.version_type": {
       "name": "version_type",
-      "values": {
-        "post": "post",
-        "page": "page"
-      }
+      "schema": "public",
+      "values": [
+        "post",
+        "page"
+      ]
     }
   },
   "schemas": {},
@@ -1075,5 +1131,11 @@
     "schemas": {},
     "tables": {},
     "columns": {}
-  }
+  },
+  "id": "f3e41626-e91e-49b6-ad35-280c5a8fd05b",
+  "prevId": "51957b38-1537-4b60-aa6d-171937c20fe5",
+  "sequences": {},
+  "policies": {},
+  "views": {},
+  "roles": {}
 }

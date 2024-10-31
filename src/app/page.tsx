@@ -3,6 +3,8 @@ import { TopPostsList } from "@/components/top-posts-list";
 import { PostsList } from "@/components/posts-list";
 import { getFeaturedPosts, getPosts, getTopPosts } from "@/lib/actions";
 
+import './globals.css'
+
 const initialTop = await getTopPosts();
 const initialFeatured = await getFeaturedPosts();
 const initialFeed = await getPosts();

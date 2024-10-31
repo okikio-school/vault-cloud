@@ -49,6 +49,7 @@ export const authOptions: Omit<AuthOptions, "adapter"> & { adapter: typeof adapt
         session.user.id = user.userId;
         session.user.bio = user.bio;
         session.user.image = user.image;
+        session.user.license = user.license;
       }
       // console.log({
       //   session, 

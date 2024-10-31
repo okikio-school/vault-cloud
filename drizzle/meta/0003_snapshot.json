@@ -1,4 +1,6 @@
 {
+  "id": "ce5e022f-7919-42ef-aad8-8e6f26bbec30",
+  "prevId": "e8c67b56-bfb3-4a49-98a5-8fe328cf8cf6",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -84,20 +86,20 @@
         "account_user_id_users_user_id_fk": {
           "name": "account_user_id_users_user_id_fk",
           "tableFrom": "account",
+          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
-          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "cascade",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
-        "account_provider_providerAccountId": {
-          "name": "account_provider_providerAccountId",
+        "account_provider_providerAccountId_pk": {
+          "name": "account_provider_providerAccountId_pk",
           "columns": [
             "provider",
             "providerAccountId"
@@ -106,8 +108,8 @@
       },
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.assets": {
       "name": "assets",
@@ -122,6 +124,7 @@
         "type": {
           "name": "type",
           "type": "asset_type",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         },
@@ -173,8 +176,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.comments": {
       "name": "comments",
@@ -222,48 +225,48 @@
         "comments_post_id_posts_post_id_fk": {
           "name": "comments_post_id_posts_post_id_fk",
           "tableFrom": "comments",
+          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
-          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         },
         "comments_user_id_users_user_id_fk": {
           "name": "comments_user_id_users_user_id_fk",
           "tableFrom": "comments",
+          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
-          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         },
         "comments_parent_comment_comments_comment_id_fk": {
           "name": "comments_parent_comment_comments_comment_id_fk",
           "tableFrom": "comments",
+          "tableTo": "comments",
           "columnsFrom": [
             "parent_comment"
           ],
-          "tableTo": "comments",
           "columnsTo": [
             "comment_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.contentversions": {
       "name": "contentversions",
@@ -284,6 +287,7 @@
         "type": {
           "name": "type",
           "type": "version_type",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         },
@@ -323,22 +327,22 @@
         "contentversions_post_id_posts_post_id_fk": {
           "name": "contentversions_post_id_posts_post_id_fk",
           "tableFrom": "contentversions",
+          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
-          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.follows": {
       "name": "follows",
@@ -359,6 +363,7 @@
         "type": {
           "name": "type",
           "type": "follow_type",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         },
@@ -374,20 +379,20 @@
         "follows_follower_id_users_user_id_fk": {
           "name": "follows_follower_id_users_user_id_fk",
           "tableFrom": "follows",
+          "tableTo": "users",
           "columnsFrom": [
             "follower_id"
           ],
-          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
-        "follows_follower_id_entity_id_type": {
-          "name": "follows_follower_id_entity_id_type",
+        "follows_follower_id_entity_id_type_pk": {
+          "name": "follows_follower_id_entity_id_type_pk",
           "columns": [
             "follower_id",
             "entity_id",
@@ -397,8 +402,8 @@
       },
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.permissions": {
       "name": "permissions",
@@ -429,15 +434,15 @@
       "uniqueConstraints": {
         "permissions_name_unique": {
           "name": "permissions_name_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "name"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       },
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.postassets": {
       "name": "postassets",
@@ -461,33 +466,33 @@
         "postassets_post_id_posts_post_id_fk": {
           "name": "postassets_post_id_posts_post_id_fk",
           "tableFrom": "postassets",
+          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
-          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         },
         "postassets_assetid_assets_assetid_fk": {
           "name": "postassets_assetid_assets_assetid_fk",
           "tableFrom": "postassets",
+          "tableTo": "assets",
           "columnsFrom": [
             "assetid"
           ],
-          "tableTo": "assets",
           "columnsTo": [
             "assetid"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
-        "postassets_post_id_assetid": {
-          "name": "postassets_post_id_assetid",
+        "postassets_post_id_assetid_pk": {
+          "name": "postassets_post_id_assetid_pk",
           "columns": [
             "post_id",
             "assetid"
@@ -496,8 +501,8 @@
       },
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.postreads": {
       "name": "postreads",
@@ -527,46 +532,46 @@
         "postreads_post_id_posts_post_id_fk": {
           "name": "postreads_post_id_posts_post_id_fk",
           "tableFrom": "postreads",
+          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
-          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         },
         "postreads_post_version_contentversions_version_id_fk": {
           "name": "postreads_post_version_contentversions_version_id_fk",
           "tableFrom": "postreads",
+          "tableTo": "contentversions",
           "columnsFrom": [
             "post_version"
           ],
-          "tableTo": "contentversions",
           "columnsTo": [
             "version_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         },
         "postreads_user_id_users_user_id_fk": {
           "name": "postreads_user_id_users_user_id_fk",
           "tableFrom": "postreads",
+          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
-          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
-        "postreads_post_id_post_version_user_id": {
-          "name": "postreads_post_id_post_version_user_id",
+        "postreads_post_id_post_version_user_id_pk": {
+          "name": "postreads_post_id_post_version_user_id_pk",
           "columns": [
             "post_id",
             "post_version",
@@ -576,8 +581,8 @@
       },
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.posts": {
       "name": "posts",
@@ -619,30 +624,30 @@
         "posts_userid_users_user_id_fk": {
           "name": "posts_userid_users_user_id_fk",
           "tableFrom": "posts",
+          "tableTo": "users",
           "columnsFrom": [
             "userid"
           ],
-          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "posts_version_unique": {
           "name": "posts_version_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "version"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       },
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.rolepermissions": {
       "name": "rolepermissions",
@@ -666,33 +671,33 @@
         "rolepermissions_permission_id_permissions_permission_id_fk": {
           "name": "rolepermissions_permission_id_permissions_permission_id_fk",
           "tableFrom": "rolepermissions",
+          "tableTo": "permissions",
           "columnsFrom": [
             "permission_id"
           ],
-          "tableTo": "permissions",
           "columnsTo": [
             "permission_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         },
         "rolepermissions_role_id_roles_role_id_fk": {
           "name": "rolepermissions_role_id_roles_role_id_fk",
           "tableFrom": "rolepermissions",
+          "tableTo": "roles",
           "columnsFrom": [
             "role_id"
           ],
-          "tableTo": "roles",
           "columnsTo": [
             "role_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
-        "rolepermissions_permission_id_role_id": {
-          "name": "rolepermissions_permission_id_role_id",
+        "rolepermissions_permission_id_role_id_pk": {
+          "name": "rolepermissions_permission_id_role_id_pk",
           "columns": [
             "permission_id",
             "role_id"
@@ -701,8 +706,8 @@
       },
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.roles": {
       "name": "roles",
@@ -733,15 +738,15 @@
       "uniqueConstraints": {
         "roles_name_unique": {
           "name": "roles_name_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "name"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       },
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.session": {
       "name": "session",
@@ -771,22 +776,22 @@
         "session_userId_users_user_id_fk": {
           "name": "session_userId_users_user_id_fk",
           "tableFrom": "session",
+          "tableTo": "users",
           "columnsFrom": [
             "userId"
           ],
-          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "cascade"
+          "onDelete": "cascade",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.slugs": {
       "name": "slugs",
@@ -813,6 +818,7 @@
         "type": {
           "name": "type",
           "type": "slug_type",
+          "typeSchema": "public",
           "primaryKey": false,
           "notNull": true
         }
@@ -823,15 +829,15 @@
       "uniqueConstraints": {
         "slugs_slug_unique": {
           "name": "slugs_slug_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "slug"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       },
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.tags": {
       "name": "tags",
@@ -856,15 +862,15 @@
       "uniqueConstraints": {
         "tags_name_unique": {
           "name": "tags_name_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "name"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       },
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.tagstoposts": {
       "name": "tagstoposts",
@@ -888,33 +894,33 @@
         "tagstoposts_tag_id_tags_tag_id_fk": {
           "name": "tagstoposts_tag_id_tags_tag_id_fk",
           "tableFrom": "tagstoposts",
+          "tableTo": "tags",
           "columnsFrom": [
             "tag_id"
           ],
-          "tableTo": "tags",
           "columnsTo": [
             "tag_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         },
         "tagstoposts_post_id_posts_post_id_fk": {
           "name": "tagstoposts_post_id_posts_post_id_fk",
           "tableFrom": "tagstoposts",
+          "tableTo": "posts",
           "columnsFrom": [
             "post_id"
           ],
-          "tableTo": "posts",
           "columnsTo": [
             "post_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
-        "tagstoposts_tag_id_post_id": {
-          "name": "tagstoposts_tag_id_post_id",
+        "tagstoposts_tag_id_post_id_pk": {
+          "name": "tagstoposts_tag_id_post_id_pk",
           "columns": [
             "tag_id",
             "post_id"
@@ -923,8 +929,8 @@
       },
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.userroles": {
       "name": "userroles",
@@ -948,33 +954,33 @@
         "userroles_user_id_users_user_id_fk": {
           "name": "userroles_user_id_users_user_id_fk",
           "tableFrom": "userroles",
+          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
-          "tableTo": "users",
           "columnsTo": [
             "user_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         },
         "userroles_role_id_roles_role_id_fk": {
           "name": "userroles_role_id_roles_role_id_fk",
           "tableFrom": "userroles",
+          "tableTo": "roles",
           "columnsFrom": [
             "role_id"
           ],
-          "tableTo": "roles",
           "columnsTo": [
             "role_id"
           ],
-          "onUpdate": "no action",
-          "onDelete": "no action"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
-        "userroles_user_id_role_id": {
-          "name": "userroles_user_id_role_id",
+        "userroles_user_id_role_id_pk": {
+          "name": "userroles_user_id_role_id_pk",
           "columns": [
             "user_id",
             "role_id"
@@ -983,8 +989,8 @@
       },
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.users": {
       "name": "users",
@@ -1025,6 +1031,12 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "license": {
+          "name": "license",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
         }
       },
       "indexes": {},
@@ -1033,15 +1045,15 @@
       "uniqueConstraints": {
         "users_email_unique": {
           "name": "users_email_unique",
+          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ],
-          "nullsNotDistinct": false
+          ]
         }
       },
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     },
     "public.verificationToken": {
       "name": "verificationToken",
@@ -1069,8 +1081,8 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {
-        "verificationToken_identifier_token": {
-          "name": "verificationToken_identifier_token",
+        "verificationToken_identifier_token_pk": {
+          "name": "verificationToken_identifier_token_pk",
           "columns": [
             "identifier",
             "token"
@@ -1079,8 +1091,8 @@
       },
       "uniqueConstraints": {},
       "policies": {},
-      "isRLSEnabled": false,
-      "checkConstraints": {}
+      "checkConstraints": {},
+      "isRLSEnabled": false
     }
   },
   "enums": {
@@ -1119,15 +1131,13 @@
     }
   },
   "schemas": {},
-  "_meta": {
-    "schemas": {},
-    "tables": {},
-    "columns": {}
-  },
-  "id": "e8c67b56-bfb3-4a49-98a5-8fe328cf8cf6",
-  "prevId": "f3e41626-e91e-49b6-ad35-280c5a8fd05b",
   "sequences": {},
+  "roles": {},
   "policies": {},
   "views": {},
-  "roles": {}
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
 }

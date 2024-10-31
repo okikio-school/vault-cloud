@@ -11,6 +11,7 @@ export function FeaturedPost({ initialList }: { initialList: Awaited<ReturnType<
  
   if (error) return <div>Failed to load</div>;
   if (isLoading && (!list || list?.length <= 0)) return <div>Loading...</div>;
+  if (list?.length <= 0) return <div>Empty...</div>;
 
   let version = "";
   if (!list[0].version) {version = "0"} else {version = list[0].version.toString()}
