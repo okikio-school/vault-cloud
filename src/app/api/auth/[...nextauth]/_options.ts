@@ -43,6 +43,9 @@ export const authOptions: Omit<AuthOptions, "adapter"> & { adapter: typeof adapt
     }),
     // ...add more providers here
   ],
+  session: {
+    strategy: "jwt", // Switches session handling to JWT
+  },
   callbacks: {
     async session({ session, token, user }) {
       if (user) { 
@@ -51,13 +54,27 @@ export const authOptions: Omit<AuthOptions, "adapter"> & { adapter: typeof adapt
         session.user.image = user.image;
         session.user.license = user.license;
       }
-      // console.log({
-      //   session, 
-      //   token,
-      //   user
-      // })
+
+      if (token) {
+        session.accessToken = token.accessToken as string;
+      }
 
       return session;
+    },
+    async jwt({ token, account, user }) {
+      // Add user info to the JWT token
+      if (user) {
+        token.userId = user.userId;
+        token.bio = user.bio;
+        token.image = user.image;
+        token.license = user.license;
+      }
+
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+
+      return token;
     },
   }
 };
