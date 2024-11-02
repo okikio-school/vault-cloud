@@ -1,7 +1,6 @@
-
 import { getToken } from "next-auth/jwt";
 
-// Get users details use Authorization Bearer Token
+// Get raw encrypted session token to save for future requests
 export async function GET(req: Request) {
   const cookie = req.headers.get("cookie") ?? "";
   const token = await getToken({
@@ -15,15 +14,12 @@ export async function GET(req: Request) {
         )
       ),
     },
+    raw: true
   });
 
   if (token) {
-    // res.status(200).json({ token: session.accessToken });
-    return Response.json({
-      token
-    }, { status: 200 });
+    return Response.json({ token }, { status: 200 });
   } else {
-    // res.status(401).json({ message: "Unauthorized" });
     return Response.json({ message: "Unauthorized" }, { status: 401 });
   }
 }

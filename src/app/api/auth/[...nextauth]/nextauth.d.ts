@@ -1,4 +1,4 @@
-import type { User as OldUser, DefaultJWT } from "next-auth"
+import type { User as OldUser, DefaultJWT, Account } from "next-auth"
 import type { users } from "@/db/schema.ts"
 import NextAuth from "next-auth"
 
@@ -15,9 +15,9 @@ declare module "next-auth" {
       email: NewUser["email"] | null,
       image: NewUser["image"] | null,
       bio: NewUser["bio"] | null,
-      license: NewUser["license"],
+      license: NewUser["license"] | null,
     } & NewUser;
-    accessToken: string;
+    access_token: string;
   }
 
   interface User extends NewUser {
@@ -26,10 +26,19 @@ declare module "next-auth" {
     email: NewUser["email"] | null,
     image: NewUser["image"] | null,
     bio: NewUser["bio"] | null,
-    license: NewUser["license"]
+    license: NewUser["license"] | null
   }
+}
 
+
+declare module "next-auth/jwt" {
   interface JWT extends DefaultJWT {
-    license: string
+    userId: NewUser["userId"] | null;
+    name: NewUser["name"] | null;
+    email: NewUser["email"] | null;
+    image: NewUser["image"] | null;
+    bio: NewUser["bio"] | null;
+    license: NewUser["license"] | null;
+    access_token: Account['access_token'] | null;
   }
 }

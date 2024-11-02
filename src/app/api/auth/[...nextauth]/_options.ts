@@ -52,11 +52,11 @@ export const authOptions: Omit<AuthOptions, "adapter"> & { adapter: typeof adapt
         session.user.id = user.userId;
         session.user.bio = user.bio;
         session.user.image = user.image;
-        session.user.license = user.license;
+        session.user.license = user.license!;
       }
 
       if (token) {
-        session.accessToken = token.accessToken as string;
+        session.access_token = token.access_token as string;
       }
 
       return session;
@@ -65,13 +65,15 @@ export const authOptions: Omit<AuthOptions, "adapter"> & { adapter: typeof adapt
       // Add user info to the JWT token
       if (user) {
         token.userId = user.userId;
+        token.name = user.name;
+        token.email = user.email;
         token.bio = user.bio;
         token.image = user.image;
         token.license = user.license;
       }
 
       if (account) {
-        token.accessToken = account.access_token;
+        token.access_token = account.access_token;
       }
 
       return token;
